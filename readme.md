@@ -1,3 +1,4 @@
+## 01 
 QLabel的继承关系是QObject→QWidget→QFrame→QLabel
 
 main 函数作为程序的入口，主要功能是创建应用程序，创建窗口，显示窗口，运行应用程序，开始应用程序的消息循环和事件处理。
@@ -65,7 +66,10 @@ namespace MyLib {
 ```
 - 支持库的逐步替换：使用inline命名空间可以方便地逐步替换库的实现，因为新的实现可以直接添加到旧的命名空间中，而不会影响已有的代码。访问新版本 MyLib::Utils::v2::mul(1, 2)， 不会影响旧版本访问  MyLib::Utils::add(1, 2)。
 
-## Argument-Dependent Lookup (ADL)
+
+## 02
+> Argument-Dependent Lookup (ADL)
+
 根据函数参数类型在命名空间中查找函数的机制。
 - 首先在当前作用域中查找函数
 - 如果当前作用域中找不到函数，则在包含当前作用域的命名空间中查找函数
@@ -84,7 +88,8 @@ int main() {
 }
 ```
 
-## Q_OBJECT 宏
+> Q_OBJECT 宏
+
 使用 Q_OBJECT 宏能够为一个类添加以下特性：
 
 - 自动元对象：Q_OBJECT 宏会自动为类生成一个元对象，该元对象包含了类的信号和槽等元信息。元对象机制是 Qt 中的一种运行时反射机制，用于支持信号和槽、动态属性、对象名称等特性。
@@ -132,3 +137,9 @@ connect(spinNum, SIGNAL(valueChanged(int)), this, SIGNAL(refreshInfo(int));
 `connectSlotsByName(QWDialog)`函数将搜索`QWDialog`界面上的所有组件，将信号与槽函数匹配的信号和槽关联起来，它假设槽函数的名称是，`void on_<object name>_<signal name>(<signal parameters>);`
 
 增加信号和槽的关联，可以通过界面设计通过组件跳转`转到槽`设计，这里是通过`connectSlotsByName`方式来做到；还可以通过界面操作，进入`编辑信号/槽函数`模式，选择组件拖动到空白处添加对应的关联关系，自动会在 UI 头文件中添加`connect`方法。
+
+采用纯代码方式实现UI界面是比较复杂的，代码设计的工作量大而繁琐，需要自己定义每个组件，通过代码的形式布局各个组件，需要手动`connect`来关联信号与槽函数，不用专门定义一个私有成员指针`ui`。
+
+QAction是一个非常有用的类，在界面设计时创建Action，并编写其trigger()信号的槽函数。使用设计的Action可以创建菜单项、工具栏按钮，还可以设置为QToolButton按钮的关联Action。点击这些由Action创建的菜单项、按钮就是执行Action的槽函数。
+
+QAction 封装了一个动作，可以执行一些特定的操作，例如打开一个文件、保存数据、剪切和粘贴文本、撤销操作等。当用户在应用程序中执行一个动作时，QAction 会发出一个信号，通知应用程序执行相应的操作。QAction 还可以设置图标、文本、状态等属性，以便用户快速识别和操作。

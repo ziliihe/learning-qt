@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/icons8-directory-32.ico</file>
+        <file>images/icons8-copy-32.ico</file>
+        <file>images/icons8-cut-32.ico</file>
+        <file>images/icons8-bold-32.ico</file>
+        <file>images/icons8-clear-32.ico</file>
+        <file>images/icons8-close-32.ico</file>
+        <file>images/icons8-font-64.ico</file>
+        <file>images/icons8-italic-32.ico</file>
+        <file>images/icons8-new-file-64.ico</file>
+        <file>images/icons8-open-32.ico</file>
+        <file>images/icons8-paste-32.ico</file>
+        <file>images/icons8-underline-32.ico</file>
+    </qresource>
+</RCC>
